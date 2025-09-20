@@ -34,7 +34,7 @@ st.subheader("Escucho lo que quieres traducir.")
 # ========================
 # 3. Cambiar imagen a Translator.jpeg
 # ========================
-image = Image.open('Translator.jpeg')
+image = Image.open('Translator.jpg')
 st.image(image, width=300)
 
 with st.sidebar:
