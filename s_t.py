@@ -1,37 +1,54 @@
 import os
 import streamlit as st
 from bokeh.models.widgets import Button
-#from bokeh.io import show
-#from bokeh.models import Button
 from bokeh.models import CustomJS
 from streamlit_bokeh_events import streamlit_bokeh_events
 from PIL import Image
 import time
 import glob
 
-
-
 from gtts import gTTS
 from googletrans import Translator
 
 
+# ========================
+# 1. Cambiar fondo y color de texto
+# ========================
+page_style = """
+<style>
+    .stApp {
+        background-color: #7f4f24;
+        color: #c2c5aa;
+    }
+    h1, h2, h3, h4, h5, h6, p, div, span, label {
+        color: #c2c5aa !important;
+    }
+</style>
+"""
+st.markdown(page_style, unsafe_allow_html=True)
+
+# Título y subtítulo
 st.title("TRADUCTOR.")
 st.subheader("Escucho lo que quieres traducir.")
 
+# ========================
+# 3. Cambiar imagen a Translator.jpeg
+# ========================
+image = Image.open('Translator.jpeg')
+st.image(image, width=300)
 
-image = Image.open('OIG7.jpg')
-
-st.image(image,width=300)
 with st.sidebar:
     st.subheader("Traductor.")
     st.write("Presiona el botón, cuando escuches la señal "
-                 "habla lo que quieres traducir, luego selecciona"   
-                 " la configuración de lenguaje que necesites.")
+             "habla lo que quieres traducir, luego selecciona"
+             " la configuración de lenguaje que necesites.")
 
+st.write("Toca el Botón y habla lo que quieres traducir")
 
-st.write("Toca el Botón y habla lo que quires traducir")
-
-stt_button = Button(label=" Escuchar  🎤", width=300,  height=50)
+# ========================
+# 4. Cambiar texto del botón
+# ========================
+stt_button = Button(label=" Habla en voz alta 🎤", width=300, height=50)
 
 stt_button.js_on_event("button_click", CustomJS(code="""
     var recognition = new webkitSpeechRecognition();
@@ -123,7 +140,6 @@ if result:
         tld = "com"
     elif english_accent == "Español":
         tld = "com.mx"
-    
     elif english_accent == "Reino Unido":
         tld = "co.uk"
     elif english_accent == "Estados Unidos":
@@ -175,10 +191,3 @@ if result:
                     print("Deleted ", f)
 
     remove_files(7)
-           
-
-
-        
-    
-
-
