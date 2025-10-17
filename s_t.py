@@ -29,7 +29,7 @@ st.markdown(page_style, unsafe_allow_html=True)
 
 # Título y subtítulo
 st.title("TRADUCTOR.")
-st.subheader("Escucho lo que quieres traducir.")
+st.subheader("Habla en voz alta y te traduciré")
 
 # ========================
 # 3. Cambiar imagen a Translator.jpeg
